@@ -4,20 +4,36 @@
     <description></description>
     <author email="xyazu@protonmail.com" href="http://lets-code.ru">xYazu</author>
     <content src="index.html" />
-    <access origin="*" />
 
     <plugin name="cordova-plugin-console" source="npm" spec="~1.0.2" />
     <plugin name="cordova-plugin-dialogs" source="npm" spec="~1.2.0" />
     <plugin name="cordova-plugin-inappbrowser" source="npm" spec="~1.3.0" />
     <plugin name="cordova-plugin-network-information" source="npm" spec="~1.2.0" />
+    <plugin name="cordova-plugin-device-orientation" source="npm" spec="~1.0.2" />
+    <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
+
     
-    
-	<allow-intent href="http://*/*" />
+    <access origin="*" />
+    <allow-intent href="*" />
+    <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <allow-intent href="data:*" />
+
+    <allow-navigation href="*" />
+    <allow-navigation href="http://*/*" />
+    <allow-navigation href="https://*/*" />
+    <allow-navigation href="tel:*" />
+    <allow-navigation href="sms:*" />
+    <allow-navigation href="mailto:*" />
+    <allow-navigation href="geo:*" />
+    <allow-navigation href="data:*" />
+
+
+
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
@@ -31,7 +47,7 @@
     <preference name="android-minSdkVersion" value="23" />
 
 
-    <plugin name="cordova-plugin-device-orientation" source="npm" spec="~1.0.2" />
+    
 
 
     <platform name="android">
