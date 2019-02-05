@@ -42394,7 +42394,6 @@ new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
     offMobileAccessibility() {
       //отключаем масштабирование, если оно включено в настройках телефона
       if (window.MobileAccessibility) window.MobileAccessibility.usePreferredTextZoom(false);
-      if (MobileAccessibility) MobileAccessibility.usePreferredTextZoom(false);
     }
   },
   watch: {
