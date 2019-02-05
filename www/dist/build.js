@@ -42390,18 +42390,22 @@ new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
         this.noSelect(child);
         child = child.nextSibling;
       }
+    },
+    offMobileAccessibility() {
+      //отключаем масштабирование, если оно включено в настройках телефона
+      if (window.MobileAccessibility) window.MobileAccessibility.usePreferredTextZoom(false);
     }
   },
   watch: {
     '$route'() {
       this.noSelect(document.getElementById('application'));
+      this.offMobileAccessibility();
     }
   },
   created: function () {
     document.addEventListener('DOMContentLoaded', () => {
       this.$nextTick(() => {
-        //отключаем масштабирование, если оно включено в настройках телефона
-        if (window.MobileAccessibility) window.MobileAccessibility.usePreferredTextZoom(false);
+        this.offMobileAccessibility();
         this.$store.dispatch('init');
         this.noSelect(document.getElementById('application'));
       });
