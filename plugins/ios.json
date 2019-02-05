@@ -1,0 +1,37 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-console": {
+      "PACKAGE_NAME": "com.silverspring.silverspring"
+    },
+    "cordova-plugin-device-orientation": {
+      "PACKAGE_NAME": "com.silverspring.silverspring"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "com.silverspring.silverspring"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.silverspring.silverspring"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.silverspring.silverspring"
+    },
+    "phonegap-plugin-mobile-accessibility": {
+      "PACKAGE_NAME": "com.silverspring.silverspring"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.silverspring.silverspring"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "com.silverspring.silverspring"
+    }
+  }
+}
