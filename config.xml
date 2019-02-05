@@ -50,7 +50,7 @@
 
 
     <platform name="android">
-
+        <preference name="orientation" value="portrait" />
         <icon src="www/res/icon/android/default.png" />
 
         <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
@@ -70,6 +70,7 @@
         -->
     </platform>
     <platform name="ios">
+        <preference name="orientation" value="portrait" />
         <icon height="57" platform="ios" src="www/res/icon/ios/icon.png" width="57" />
         <icon height="114" platform="ios" src="www/res/icon/ios/icon@2x.png" width="114" />
         <icon height="40" platform="ios" src="www/res/icon/ios/icon-40.png" width="40" />
