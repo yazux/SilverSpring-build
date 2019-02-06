@@ -16525,6 +16525,11 @@ files.keys().forEach(key => {
       this.$store.commit('setBackRoute', { name: 'Addresses' });
 
       if (this.$route.params.id != 'new') this.getAddress();
+
+      document.addEventListener("keyup", e => {
+        e.preventDefault();
+        if (e.keyCode === 13) this.save();
+      });
     },
     getAddressId() {
       //возвращает количество секунд
@@ -27257,6 +27262,15 @@ return jQuery;
       this.$store.commit('showBackButton');
       this.$store.commit('toggleToolbar', true);
       this.$store.commit('setBackRoute', { name: 'Home' });
+
+      this.$nextTick(() => {
+        document.querySelectorAll('.tellink').forEach(item => {
+          item.addEventListener('click', e => {
+            e.preventDefault();
+            window.open(e.target.getAttribute('href'), '_system');
+          });
+        });
+      });
     }
   },
   created: function () {
@@ -27310,6 +27324,11 @@ return jQuery;
       this.$store.commit('showBackButton');
       this.$store.commit('toggleToolbar', true);
       this.$store.commit('setBackRoute', { name: 'About' });
+
+      document.addEventListener("keyup", e => {
+        e.preventDefault();
+        if (e.keyCode === 13) this.save();
+      });
     },
     save() {
       this.$validator.validateAll().then(valid => {
@@ -27456,7 +27475,7 @@ var Component = normalizeComponent(
             this.$store.commit('setTitle', this.title);
             this.$store.commit('hideBackButton');
             this.$store.commit('toggleToolbar', false);
-            this.$store.commit('setBackRoute', undefined);
+            this.$store.commit('setBackRoute', { name: 'Home' });
             this.$nextTick(() => setTimeout(() => this.helloMessage(), 1000));
         },
         onSuccess() {
@@ -27736,10 +27755,15 @@ var Component = normalizeComponent(
         setTimeout(() => {
           //setTimeout нужен чтобы каждая следующая итерация не перекрывала предыдущую
           if (this.canOrder) return;
-          if (!this.times || !this.times.length || this.isWeekend) this.form.date = new Date(Date.now() + i * 24 * 60 * 60 * 1000);else this.times.map(time => {
-            if (this.canOrder) return;
-            this.form.time = time.id;
-          });
+          if (!this.times || !this.times.length || this.isWeekend) this.form.date = new Date(Date.now() + i * 24 * 60 * 60 * 1000);else {
+            this.times.map(time => {
+              if (this.canOrder) return;
+              this.form.time = time.id;
+            });
+            //если перебрали все периоды за день, но доступное время не нашли,
+            //значит перекючаем на следующий день
+            if (!this.canOrder) this.form.date = new Date(Date.now() + i * 24 * 60 * 60 * 1000);
+          }
         }, 0);
       }
     },
@@ -27747,9 +27771,6 @@ var Component = normalizeComponent(
      * Сохраняет параметры заказа в store
      */
     save() {
-
-      console.log(this.form);
-
       this.$store.commit('order/setNewOrder', this.form);
       this.$router.push({ name: 'CheckOrder' });
     },
@@ -28292,6 +28313,10 @@ var Component = normalizeComponent(
       this.$store.dispatch('order/getNewOrder');
       this.$store.commit('setBackRoute', { name: 'NewOrder' });
       this.getOrder();
+      document.addEventListener("keyup", e => {
+        e.preventDefault();
+        if (e.keyCode === 13) this.save();
+      });
     },
     getDistrict(id) {
       let district = this.districts.find(item => parseInt(item.id) === parseInt(id));
@@ -42379,9 +42404,27 @@ new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
   store: __WEBPACK_IMPORTED_MODULE_5__store__["a" /* store */],
   router,
   el: '#app',
+  data() {
+    return {
+      exit: false
+    };
+  },
   methods: {
     exitApp() {
       if (navigator.app) navigator.app.exitApp();else if (navigator.device) navigator.device.exitApp();else window.close();
+    },
+    backListener() {
+      document.addEventListener('backbutton', e => {
+        e.preventDefault();
+        if (this.backRoute && this.$route.name !== 'Home') this.$router.push(this.backRoute);else {
+          if (this.exit) this.exitApp();
+          this.$store.commit('showSnackbar', ["Для выхода нажмите 'Назад' ещё раз", 2000]);
+          this.exit = true;
+          setTimeout(() => {
+            this.exit = false;
+          }, 2000);
+        }
+      }, false);
     },
     noSelect(node) {
       if (node.nodeType == 1) node.classList.add('no-select');
@@ -42397,6 +42440,11 @@ new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
       //if (MobileAccessibility) MobileAccessibility.usePreferredTextZoom(false);
     }
   },
+  computed: {
+    backRoute() {
+      return this.$store.state.backRoute;
+    }
+  },
   watch: {
     '$route'() {
       this.noSelect(document.getElementById('application'));
@@ -42409,6 +42457,7 @@ new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
         this.offMobileAccessibility();
         this.$store.dispatch('init');
         this.noSelect(document.getElementById('application'));
+        this.backListener();
       });
     });
   },
@@ -47564,7 +47613,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
 
 const store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
   state: {
-    endpoint: 'http://api.silverspring65.ru/api',
+    endpoint: 'https://api.silverspring65.ru/api',
     snackbar: {
       show: false,
       duration: 4000,
@@ -55658,6 +55707,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.dispatch('order/getLocalOrders').then(localOrders => {
           if (!newLocalOrder.address || !newLocalOrder.address.id) return;
           let AId = newLocalOrder.address.id;
+
+          //newLocalOrder.bottleBig = {value: 0, price: 0};
+          //newLocalOrder.pump = {value: 0, price: 0};
+          //newLocalOrder.phone = '';
+          //newLocalOrder.comment = '';
+
           localOrders[AId] = Object.assign({}, newLocalOrder);
           localStorage.setItem('ss_orders', JSON.stringify(localOrders));
         });
@@ -64843,8 +64898,8 @@ exports.install = function (Vue, options) {
       strings: {
         title: { label: "Заголовок в туллбаре", value: "О компании" },
         pageTitle: { label: "Заголовок экрана", value: "Серебряный родник" },
-        text_about: { label: "Текст О компании", value: "Доставка воды 19л, 5л, продажа сопутствующего оборудования. Продажа, ремонт и обслуживание кулеров (диспансеров) для воды" },
-        text_address: { label: "Текст адреса", value: "Адрес: г. Южно-Сахалинск, ул. Южно-Сахалинская, д. 22А, тел. <a href='tel:+7(42435)77-05-35'>77-05-35</a>, <a href='tel:+7(42435)47-05-35'>47-05-35</a>, <a href='tel:+7(42435)72-41-22'>72-41-22</a>" },
+        text_about: { label: "Текст О компании", value: "Доставка воды 19л, 5л, продажа сопутствующего оборудования. Продажа, ремонт и обслуживание кулеров (диспенсеров) для воды" },
+        text_address: { label: "Текст адреса", value: "Адрес: г. Южно-Сахалинск, ул. Южно-Сахалинская, д. 22А, тел. <a class='tellink' href='tel:+7(42435)77-05-35'>77-05-35</a>, <a class='tellink' href='tel:+7(42435)47-05-35'>47-05-35</a>, <a class='tellink' href='tel:+7(42435)72-41-22'>72-41-22</a>" },
         text_schedule_pickup_title: { label: "Заголовок графика самовывоза", value: "График самовывоза:" },
         text_schedule_delivery_title: { label: "Заголовок графкика доставки", value: "График доставки:" },
         text_attention_title: { label: "Заголовок блока Обратите внимание", value: "Обратите внимение!" },
