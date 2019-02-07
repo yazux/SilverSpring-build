@@ -55708,10 +55708,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           if (!newLocalOrder.address || !newLocalOrder.address.id) return;
           let AId = newLocalOrder.address.id;
 
-          //newLocalOrder.bottleBig = {value: 0, price: 0};
-          //newLocalOrder.pump = {value: 0, price: 0};
-          //newLocalOrder.phone = '';
-          //newLocalOrder.comment = '';
+          newLocalOrder.bottleBig = { value: 0, price: 0 };
+          newLocalOrder.pump = { value: 0, price: 0 };
 
           localOrders[AId] = Object.assign({}, newLocalOrder);
           localStorage.setItem('ss_orders', JSON.stringify(localOrders));
