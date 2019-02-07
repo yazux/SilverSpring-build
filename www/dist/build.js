@@ -5079,7 +5079,7 @@ var Component = normalizeComponent(
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_index_js__ = __webpack_require__(15);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_64706088_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_32cfa8d8_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(189);
 function injectStyle (ssrContext) {
   __webpack_require__(184)
 }
@@ -5098,7 +5098,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_index_js__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_64706088_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_index_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_32cfa8d8_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_index_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -16195,21 +16195,32 @@ var Component = normalizeComponent(
   data() {
     return {};
   },
-  watch: {},
+  watch: {
+    '$props.show'(val) {
+      this.$store.commit('popup', !!val);
+    }
+  },
   computed: {},
   methods: {
     onSuccess(e) {
       this.$emit('success', e);
+      this.$store.commit('popup', false);
     },
     onCancel(e) {
       this.$emit('cancel', e);
+      this.$store.commit('popup', false);
     },
     hide(e) {
       this.$emit('hide', e);
       this.$emit('update:show', false);
+      this.$store.commit('popup', false);
     }
   },
-  created() {}
+  created() {
+    this.$root.$on('close-popup', () => {
+      this.$emit('update:show', false);
+    });
+  }
 });
 
 /***/ }),
@@ -16742,12 +16753,14 @@ files.keys().forEach(key => {
   methods: {
     onFocus() {
       this.$emit('focus');
+      this.suggest();
     },
     onBlur() {
       this.$emit('blur');
+      this.suggestions = [];
     },
     suggest() {
-      if (this.inputValue && this.inputValue.length > 2) this.getSuggest(this.inputValue);
+      if (this.inputValue && this.inputValue.length > 2) this.getSuggest(this.inputValue);else this.suggestions = [];
     },
     onSelect(text) {
       this.suggestions = [];
@@ -28300,6 +28313,12 @@ var Component = normalizeComponent(
   watch: {
     'order'() {
       this.getOrder();
+    },
+    'form.phone'() {
+      this.$store.commit('order/setNewOrder', this.form);
+    },
+    'form.comment'() {
+      this.$store.commit('order/setNewOrder', this.form);
     }
   },
   methods: {
@@ -28333,6 +28352,7 @@ var Component = normalizeComponent(
         //сохраняем заказ в сторе
         this.$store.commit('order/setNewOrder', this.form);
         //сохраняем заказ в LocalStorage
+        this.form.removePumpAndBottle = false;
         this.$store.commit('order/saveOrderToLocal', this.form);
 
         //отправляем заказ на backend
@@ -28344,6 +28364,9 @@ var Component = normalizeComponent(
     },
     onSuccess(e) {
       this.showSuccessMessage = false;
+      //сохраняем заказ в LocalStorage
+      this.form.removePumpAndBottle = true;
+      this.$store.commit('order/saveOrderToLocal', this.form);
       this.$router.push({ name: 'Home' });
     },
     onError(e) {
@@ -42416,6 +42439,13 @@ new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
     backListener() {
       document.addEventListener('backbutton', e => {
         e.preventDefault();
+
+        //если в момент нажатия открыто модальное окно, то закроем его
+        if (this.popup) {
+          this.$root.$emit('close-popup');
+          return; //и никуда не возвращаем пользователя
+        }
+
         if (this.backRoute && this.$route.name !== 'Home') this.$router.push(this.backRoute);else {
           if (this.exit) this.exitApp();
           this.$store.commit('showSnackbar', ["Для выхода нажмите 'Назад' ещё раз", 2000]);
@@ -42443,6 +42473,9 @@ new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
   computed: {
     backRoute() {
       return this.$store.state.backRoute;
+    },
+    popup() {
+      return this.$store.state.popup;
     }
   },
   watch: {
@@ -43231,7 +43264,7 @@ var content = __webpack_require__(185);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("3f730c95", content, true, {});
+var update = __webpack_require__(2)("48938151", content, true, {});
 
 /***/ }),
 /* 185 */
@@ -43242,7 +43275,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "#component-popup .popup-item-container{position:absolute;z-index:999;top:0;left:0;right:0;bottom:0;height:100vh;width:100%;display:flex;align-items:center;justify-content:center}#component-popup .popup-item{background-color:#fff;bottom:10px;left:10px;right:10px;width:calc(100% - 60px);box-shadow:0 3px 1px -2px rgba(0,0,0,.01),0 2px 2px 0 rgba(0,0,0,.13),0 1px 5px 0 rgba(0,0,0,.1);padding:20px;border-radius:5px}#component-popup .popup-message{font-size:16px;text-align:center}#component-popup .popup-button-container{display:flex;align-items:flex-end;justify-content:center;padding:15px 0 0}#component-popup .popup-button-container .btn{width:calc(50% - 10px);margin:0}#component-popup .popup-button-container .btn:first-child+.btn{margin-left:20px}#component-popup .popup-overlay{position:absolute;z-index:900;left:0;top:0;right:0;bottom:0;width:100%;height:100vh;background-color:rgba(0,0,0,.5)}.slidepopup-enter-active,.slidepopup-leave-active{transition:opacity .25s,transform .2s}.slidepopup-enter,.slidepopup-leave-to{transform:scale(.5);opacity:0}.slidepopuplayout-enter-active{transition:opacity .4s}.slidepopuplayout-leave-active{transition:opacity .6s}.slidepopuplayout-enter,.slidepopuplayout-leave-to{opacity:0}@media (min-width:350px){#component-popup .popup-message{font-size:18px}}@media (min-width:400px){#component-popup .popup-message{font-size:20px}}", ""]);
+exports.push([module.i, "#component-popup .popup-item-container{position:fixed;z-index:999;top:0;left:0;right:0;bottom:0;height:100vh;width:100%;display:flex;align-items:center;justify-content:center}#component-popup .popup-item{background-color:#fff;bottom:10px;left:10px;right:10px;width:calc(100% - 60px);box-shadow:0 3px 1px -2px rgba(0,0,0,.01),0 2px 2px 0 rgba(0,0,0,.13),0 1px 5px 0 rgba(0,0,0,.1);padding:20px;border-radius:5px}#component-popup .popup-message{font-size:16px;text-align:center}#component-popup .popup-button-container{display:flex;align-items:flex-end;justify-content:center;padding:15px 0 0}#component-popup .popup-button-container .btn{width:calc(50% - 10px);margin:0}#component-popup .popup-button-container .btn:first-child+.btn{margin-left:20px}#component-popup .popup-overlay{position:fixed;z-index:900;left:0;top:0;right:0;bottom:0;width:100%;height:100vh;background-color:rgba(0,0,0,.5)}.slidepopup-enter-active,.slidepopup-leave-active{transition:opacity .25s,transform .2s}.slidepopup-enter,.slidepopup-leave-to{transform:scale(.5);opacity:0}.slidepopuplayout-enter-active{transition:opacity .4s}.slidepopuplayout-leave-active{transition:opacity .6s}.slidepopuplayout-enter,.slidepopuplayout-leave-to{opacity:0}@media (min-width:350px){#component-popup .popup-message{font-size:18px}}@media (min-width:400px){#component-popup .popup-message{font-size:20px}}", ""]);
 
 // exports
 
@@ -47623,9 +47656,13 @@ const store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
     backButton: true,
     backRoute: { name: 'Home' },
     progress: false,
-    toolbar: false
+    toolbar: false,
+    popup: false
   },
   mutations: {
+    popup(state, val) {
+      state.popup = val === undefined ? !state.popup : val;
+    },
     toggleToolbar(state, val) {
       state.toolbar = val === undefined ? !state.toolbar : val;
     },
@@ -55708,8 +55745,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           if (!newLocalOrder.address || !newLocalOrder.address.id) return;
           let AId = newLocalOrder.address.id;
 
-          newLocalOrder.bottleBig = { value: 0, price: 0 };
-          newLocalOrder.pump = { value: 0, price: 0 };
+          if (order.removePumpAndBottle) {
+            newLocalOrder.bottleBig = { value: 0, price: 0 };
+            newLocalOrder.pump = { value: 0, price: 0 };
+          }
 
           localOrders[AId] = Object.assign({}, newLocalOrder);
           localStorage.setItem('ss_orders', JSON.stringify(localOrders));
