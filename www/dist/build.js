@@ -28141,7 +28141,7 @@ var Component = normalizeComponent(
           today = this.moment(new Date()).format('DD.MM.YYYY'),
           tomorrow = this.moment(new Date()).add(1, 'days').format('DD.MM.YYYY');
 
-      if (current === today) result = 'Сегодня';else if (current === tomorrow) result = 'Завтра';else result = this.moment(value).format('Do MMMM (ddd)');
+      if (current === today) result = 'Сегодня ' + this.moment(value).format('(DD MMM)');else if (current === tomorrow) result = 'Завтра ' + this.moment(value).format('(DD MMM)');else result = this.moment(value).format('Do MMMM (ddd)');
 
       let closeCalendarFunc = function (e) {
         if (!e.target.closest('.vdp-datepicker') && !e.target.classList.contains('.vdp-datepicker') && this.$refs.datepicker) this.$refs.datepicker.close();
@@ -28155,13 +28155,6 @@ var Component = normalizeComponent(
       textValue.addEventListener('click', () => this.$refs.datepicker.showCalendar());
       document.addEventListener('click', closeCalendarFunc);
       this.hasTextValue = true;
-
-      if (result) {} else {
-        //document.removeEventListener('click', closeCalendarFunc);
-        //let textValue = inputGroup.querySelectorAll('.text-value');
-        //if (textValue) textValue.forEach(item => item.remove());
-        //this.hasTextValue = false;
-      }
     },
     /**
      * Находит сколько дней нужно прибавить к текущей дате
@@ -64991,7 +64984,7 @@ exports.install = function (Vue, options) {
           title: "Дальнее",
           schedule: [{ day: "пн-сб:", time: "09:00 - 11:00" }, { day: "пн, ср:", time: "17:00 - 21:00" }, { day: "вс:", time: "Только самовывоз" }]
         }, {
-          title: "<br/>Октябрьскоре",
+          title: "<br/>Октябрьское",
           schedule: [{ day: "пн, ср:", time: "17:00 - 21:00" }, { day: "сб:", time: "09:00 - 14:00" }, { day: "вс:", time: "Только самовывоз" }]
         }, {
           title: "Луговое, <br/>Ново-Александровка",
