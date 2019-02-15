@@ -78,9 +78,6 @@
     }
   },
   "installed_plugins": {
-    "cordova-plugin-console": {
-      "PACKAGE_NAME": "com.silverspring.silverspring"
-    },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "com.silverspring.silverspring"
     },
@@ -197,7 +194,6 @@
     }
   ],
   "plugin_metadata": {
-    "cordova-plugin-console": "1.0.7",
     "cordova-plugin-device": "2.0.3-dev",
     "cordova-plugin-device-orientation": "1.0.7",
     "cordova-plugin-dialogs": "1.2.1",

@@ -10,8 +10,6 @@
     <plugin name="cordova-plugin-device-orientation" source="npm" spec="~1.0.2" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
     <plugin name="phonegap-plugin-mobile-accessibility" spec="https://github.com/phonegap/phonegap-mobile-accessibility.git" />
-
-
     <access origin="*" />
     <allow-intent href="*" />
     <allow-intent href="http://*/*" />
@@ -39,7 +37,7 @@
     <preference name="DisallowOverscroll" value="true" />
     <preference name="orientation" value="portrait" />
     <preference name="fullscreen" value="false" />
-    <preference name="android-minSdkVersion" value="23" />
+    <preference name="android-minSdkVersion" value="26" />
     <platform name="android">
         <preference name="orientation" value="portrait" />
         <icon src="www/res/icon/android/default.png" />
@@ -52,7 +50,6 @@
     </platform>
     <platform name="ios">
         <preference name="orientation" value="portrait" />
-        
         <icon height="57" platform="ios" src="www/res/icon/ios/icon.png" width="57" />
         <icon height="114" platform="ios" src="www/res/icon/ios/icon@2x.png" width="114" />
         <icon height="40" platform="ios" src="www/res/icon/ios/icon-40.png" width="40" />

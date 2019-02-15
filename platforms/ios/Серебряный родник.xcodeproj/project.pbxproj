@@ -16,7 +16,6 @@
 		3047A5131AB8059700498E2A /* build-release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 3047A5101AB8059700498E2A /* build-release.xcconfig */; };
 		3047A5141AB8059700498E2A /* build.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 3047A5111AB8059700498E2A /* build.xcconfig */; };
 		6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */; };
-		E766F308AAD34764A5B4B4FD /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 253F6B3840AA4873803353FA /* CDVLogger.m */; };
 		339AC778A36E4A759F7A46C2 /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 703EFEC29D3A402797E4708F /* CDVDevice.m */; };
 		C2D1825A22B040A98DA9272A /* CDVCompass.m in Sources */ = {isa = PBXBuildFile; fileRef = 51D208006D1048138AA8D93A /* CDVCompass.m */; };
 		DC06A4AA03314D2D8C2DA358 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3C3101774E441C68F012D0D /* CoreLocation.framework */; };
@@ -70,8 +69,6 @@
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "Серебряный родник/config.xml"; sourceTree = "<group>"; };
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "Bridging-Header.h"; sourceTree = "<group>"; };
-		253F6B3840AA4873803353FA /* CDVLogger.m */ = {isa = PBXFileReference; name = "CDVLogger.m"; path = "cordova-plugin-console/CDVLogger.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
-		89AED013707B4D5CAC0F7D66 /* CDVLogger.h */ = {isa = PBXFileReference; name = "CDVLogger.h"; path = "cordova-plugin-console/CDVLogger.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		703EFEC29D3A402797E4708F /* CDVDevice.m */ = {isa = PBXFileReference; name = "CDVDevice.m"; path = "cordova-plugin-device/CDVDevice.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		A3FC223365E446C0807F4284 /* CDVDevice.h */ = {isa = PBXFileReference; name = "CDVDevice.h"; path = "cordova-plugin-device/CDVDevice.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		51D208006D1048138AA8D93A /* CDVCompass.m */ = {isa = PBXFileReference; name = "CDVCompass.m"; path = "cordova-plugin-device-orientation/CDVCompass.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
@@ -206,8 +203,6 @@
 		307C750510C5A3420062BCA9 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				253F6B3840AA4873803353FA /* CDVLogger.m */,
-				89AED013707B4D5CAC0F7D66 /* CDVLogger.h */,
 				703EFEC29D3A402797E4708F /* CDVDevice.m */,
 				A3FC223365E446C0807F4284 /* CDVDevice.h */,
 				51D208006D1048138AA8D93A /* CDVCompass.m */,
@@ -335,7 +330,6 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
-				E766F308AAD34764A5B4B4FD /* CDVLogger.m in Sources */,
 				339AC778A36E4A759F7A46C2 /* CDVDevice.m in Sources */,
 				C2D1825A22B040A98DA9272A /* CDVCompass.m in Sources */,
 				0215ED1CCC084817B7D7C773 /* CDVNotification.m in Sources */,

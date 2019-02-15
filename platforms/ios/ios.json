@@ -9,10 +9,6 @@
         "parents": {
           "/*": [
             {
-              "xml": "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>",
-              "count": 1
-            },
-            {
               "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
               "count": 1
             },
@@ -42,9 +38,6 @@
     }
   },
   "installed_plugins": {
-    "cordova-plugin-console": {
-      "PACKAGE_NAME": "com.silverspring.silverspring"
-    },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "com.silverspring.silverspring"
     },
@@ -69,22 +62,6 @@
   },
   "dependent_plugins": {},
   "modules": [
-    {
-      "id": "cordova-plugin-console.console",
-      "file": "plugins/cordova-plugin-console/www/console-via-logger.js",
-      "pluginId": "cordova-plugin-console",
-      "clobbers": [
-        "console"
-      ]
-    },
-    {
-      "id": "cordova-plugin-console.logger",
-      "file": "plugins/cordova-plugin-console/www/logger.js",
-      "pluginId": "cordova-plugin-console",
-      "clobbers": [
-        "cordova.logger"
-      ]
-    },
     {
       "id": "cordova-plugin-device.device",
       "file": "plugins/cordova-plugin-device/www/device.js",
@@ -169,7 +146,6 @@
     }
   ],
   "plugin_metadata": {
-    "cordova-plugin-console": "1.0.7",
     "cordova-plugin-device": "2.0.3-dev",
     "cordova-plugin-device-orientation": "1.0.7",
     "cordova-plugin-dialogs": "1.2.1",

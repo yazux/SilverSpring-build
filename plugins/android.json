@@ -7,9 +7,6 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-console": {
-      "PACKAGE_NAME": "com.silverspring.silverspring"
-    },
     "cordova-plugin-device-orientation": {
       "PACKAGE_NAME": "com.silverspring.silverspring"
     },
