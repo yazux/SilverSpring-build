@@ -5079,7 +5079,7 @@ var Component = normalizeComponent(
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_index_js__ = __webpack_require__(15);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_32cfa8d8_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_3d9a7924_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(189);
 function injectStyle (ssrContext) {
   __webpack_require__(184)
 }
@@ -5098,7 +5098,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_index_js__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_32cfa8d8_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_index_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_3d9a7924_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_index_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -16203,17 +16203,24 @@ var Component = normalizeComponent(
   computed: {},
   methods: {
     onSuccess(e) {
-      this.$emit('success', e);
-      this.$store.commit('popup', false);
+      setTimeout(() => {
+        this.$emit('success', e);
+        this.$store.commit('popup', false);
+      }, 0);
     },
     onCancel(e) {
-      this.$emit('cancel', e);
-      this.$store.commit('popup', false);
+      setTimeout(() => {
+        this.$emit('cancel', e);
+        this.$store.commit('popup', false);
+      }, 0);
     },
     hide(e) {
-      this.$emit('hide', e);
-      this.$emit('update:show', false);
-      this.$store.commit('popup', false);
+      setTimeout(() => {
+        if (e.target.classList.contains('no-close')) return;
+        this.$emit('hide', e);
+        this.$emit('update:show', false);
+        this.$store.commit('popup', false);
+      }, 0);
     }
   },
   created() {
@@ -16419,8 +16426,7 @@ files.keys().forEach(key => {
       this.changeDeleteAddress = {};
     },
     onChange(id) {
-      if (!id) id = this.changeDeleteAddress.id;
-
+      if (!parseInt(id)) id = this.changeDeleteAddress.id;
       this.$router.push({ name: 'Address', params: { id: id } });
       this.showChangeDeleteDialog = false;
       this.changeDeleteAddress = {};
@@ -27795,7 +27801,7 @@ var Component = normalizeComponent(
     save() {
       this.$store.commit('order/setNewOrder', this.form);
       this.form.removePumpAndBottle = false;
-      this.$store.commit('order/saveOrderToLocal', this.form);
+      //this.$store.commit('order/saveOrderToLocal', this.form);
       setTimeout(() => this.$router.push({ name: 'CheckOrder' }), 0);
     },
     /**
@@ -28338,6 +28344,18 @@ var Component = normalizeComponent(
 
       this.getOrder();
       this.$root.addEnterListener(e => this.save());
+
+      this.$nextTick(() => {
+        document.querySelectorAll('.tellink').forEach(item => {
+
+          console.log(item);
+
+          item.addEventListener('click', e => {
+            e.preventDefault();
+            window.open(e.target.getAttribute('href'), '_system');
+          });
+        });
+      });
     },
     getDistrict(id) {
       let district = this.districts.find(item => parseInt(item.id) === parseInt(id));
@@ -43080,7 +43098,7 @@ module.exports = function listToStyles (parentId, list) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_index_js__ = __webpack_require__(12);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_b101e86a_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(176);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_77a1b8cf_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(176);
 function injectStyle (ssrContext) {
   __webpack_require__(174)
 }
@@ -43099,7 +43117,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_index_js__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_b101e86a_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_index_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_77a1b8cf_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_index_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -43120,7 +43138,7 @@ var content = __webpack_require__(175);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("10001281", content, true, {});
+var update = __webpack_require__(2)("403841c8", content, true, {});
 
 /***/ }),
 /* 175 */
@@ -43131,7 +43149,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "#component-toolbar{display:flex;flex-direction:row;align-items:center;justify-content:space-between;background-color:var(--base-color);color:var(--base-bg-color);box-shadow:0 2px 4px -1px rgba(0,0,0,.06),0 4px 5px 0 rgba(0,0,0,.06),0 1px 10px 0 rgba(0,0,0,.08);position:fixed;z-index:10;top:0;left:0;right:0;width:100%;height:40px;padding:5px 10px;font-size:14px;line-height:14px;box-sizing:border-box}#component-toolbar .left{height:100%;display:flex;align-items:center;justify-content:flex-start;width:20%;padding:5px}#component-toolbar .center{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-align:center;margin:0 10px;width:60%}#component-toolbar .right{width:20%;height:100%;display:flex;align-items:center;justify-content:flex-end;padding:5px}#component-toolbar .back-button{width:100%;height:100%;display:flex;align-items:center}@media (min-width:350px){#component-toolbar{height:50px;padding:5px 10px;font-size:16px;line-height:16px}}@media (min-width:400px){#component-toolbar{height:50px;padding:5px 10px;font-size:16px;line-height:16px}}", ""]);
+exports.push([module.i, "#component-toolbar{display:flex;flex-direction:row;align-items:center;justify-content:space-between;background-color:var(--base-color);color:var(--base-bg-color);box-shadow:0 2px 4px -1px rgba(0,0,0,.06),0 4px 5px 0 rgba(0,0,0,.06),0 1px 10px 0 rgba(0,0,0,.08);position:fixed;z-index:50;top:0;left:0;right:0;width:100%;height:40px;padding:5px 10px;font-size:14px;line-height:14px;box-sizing:border-box}#component-toolbar .left{height:100%;display:flex;align-items:center;justify-content:flex-start;width:20%;padding:5px}#component-toolbar .center{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-align:center;margin:0 10px;width:60%}#component-toolbar .right{width:20%;height:100%;display:flex;align-items:center;justify-content:flex-end;padding:5px}#component-toolbar .back-button{width:100%;height:100%;display:flex;align-items:center}@media (min-width:350px){#component-toolbar{height:50px;padding:5px 10px;font-size:16px;line-height:16px}}@media (min-width:400px){#component-toolbar{height:50px;padding:5px 10px;font-size:16px;line-height:16px}}", ""]);
 
 // exports
 
@@ -43293,7 +43311,7 @@ var content = __webpack_require__(185);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("48938151", content, true, {});
+var update = __webpack_require__(2)("009bbafe", content, true, {});
 
 /***/ }),
 /* 185 */
@@ -43351,7 +43369,7 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"component popup",attrs:{"id":"component-popup"}},[_c('transition',{attrs:{"appear":"","name":"slidepopup"}},[(_vm.$props.show)?_c('div',{staticClass:"popup-item-container",on:{"click":_vm.hide}},[_c('div',{staticClass:"popup-item"},[_c('div',{staticClass:"popup-message",domProps:{"innerHTML":_vm._s(_vm.$props.message)}}),_vm._v(" "),_c('div',{staticClass:"popup-button-container"},[(!_vm.hideCancel)?_c('btn',{attrs:{"text":_vm.$props.cancelText,"type":"accend"},on:{"click":_vm.onCancel}}):_vm._e(),_vm._v(" "),(!_vm.hideSuccess)?_c('btn',{attrs:{"text":_vm.$props.successText},on:{"click":_vm.onSuccess}}):_vm._e()],1)])]):_vm._e()]),_vm._v(" "),_c('transition',{attrs:{"appear":"","name":"slidepopuplayout"}},[(_vm.$props.show)?_c('div',{staticClass:"popup-overlay",on:{"click":_vm.hide}}):_vm._e()])],1)}
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"component popup",attrs:{"id":"component-popup"}},[_c('transition',{attrs:{"appear":"","name":"slidepopup"}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.$props.show),expression:"$props.show"}],staticClass:"popup-item-container",on:{"click":_vm.hide}},[_c('div',{staticClass:"popup-item no-close"},[_c('div',{staticClass:"popup-message no-close",domProps:{"innerHTML":_vm._s(_vm.$props.message)}}),_vm._v(" "),_c('div',{staticClass:"popup-button-container no-close"},[(!_vm.hideCancel)?_c('btn',{staticClass:"no-close",attrs:{"text":_vm.$props.cancelText,"type":"accend"},on:{"click":_vm.onCancel}}):_vm._e(),_vm._v(" "),(!_vm.hideSuccess)?_c('btn',{staticClass:"no-close",attrs:{"text":_vm.$props.successText},on:{"click":_vm.onSuccess}}):_vm._e()],1)])])]),_vm._v(" "),_c('transition',{attrs:{"appear":"","name":"slidepopuplayout"}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.$props.show),expression:"$props.show"}],staticClass:"popup-overlay",on:{"click":_vm.hide}})])],1)}
 var staticRenderFns = []
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
@@ -65077,11 +65095,11 @@ exports.install = function (Vue, options) {
 
         text_send_order_success_message: {
           label: "Текст уведомления в случае успеха при отправке нового заказа",
-          value: "Спасибо за ваш заказ!<br/>Ожидайте доставку<br/>%datetime%.</br><b>Обратите внимание:</b> оплата заказа производится курьеру наличным расчётом."
+          value: "Спасибо за ваш заказ!<br/>Ожидайте доставку<br/>%datetime%.</br><b>Обратите внимание:</b> оплата заказа производится курьеру наличным расчётом.<br/><br/> Отмена заказа осуществляется только по телефону <a class='tellink no-close' href='tel:+7(4242)77-05-35'>77-05-35</a>"
         },
         text_send_order_error_message: {
           label: "Текст уведомления в случае ошибке при отправке нового заказа",
-          value: "Извините!<br/> Возникла ошибка при оформлении вашего заказа. Пожалуйста, свяжитесь с нами по телефону!"
+          value: "Извините!<br/> Возникла ошибка при оформлении вашего заказа.<br/>Пожалуйста, оформите заказ по телефону <a class='tellink no-close' href='tel:+7(4242)77-05-35'>77-05-35</a>."
         },
 
         text_success_send_order_btn: { label: "Текст на кнопке в случае успеха при отправке нового заказа", value: "Ок" },
