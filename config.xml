@@ -38,6 +38,7 @@
     <preference name="orientation" value="portrait" />
     <preference name="fullscreen" value="false" />
     <preference name="android-minSdkVersion" value="23" />
+    <preference name="android-targetSdkVersion" value="26" />
     <platform name="android">
         <preference name="orientation" value="portrait" />
         <icon src="www/res/icon/android/default.png" />
