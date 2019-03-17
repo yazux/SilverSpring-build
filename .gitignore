@@ -1,0 +1,16 @@
+#ignore
+node_modules
+node_modules/*
+.idea/*
+.idea
+.gragle
+.gragle/*
+/*/.gragle/*
+platforms/android/.gradle
+platforms/android/.gradle/*
+platforms/android/app/build
+platforms/android/app/build/*
+platforms/ios/app/build
+platforms/ios/app/build/*
+*.apk
+/*.apk

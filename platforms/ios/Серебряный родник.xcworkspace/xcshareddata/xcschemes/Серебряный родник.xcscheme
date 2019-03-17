@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0730"
+   LastUpgradeVersion = "1010"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-               BuildableName = "Серебряный родник.app"
-               BlueprintName = "Серебряный родник"
-               ReferencedContainer = "container:Серебряный родник.xcodeproj">
+               BuildableName = "&#x421;&#x435;&#x440;&#x435;&#x431;&#x440;&#x44f;&#x43d;&#x44b;&#x438;&#x306; &#x440;&#x43e;&#x434;&#x43d;&#x438;&#x43a;.app"
+               BlueprintName = "&#x421;&#x435;&#x440;&#x435;&#x431;&#x440;&#x44f;&#x43d;&#x44b;&#x438;&#x306; &#x440;&#x43e;&#x434;&#x43d;&#x438;&#x43a;"
+               ReferencedContainer = "container:&#x421;&#x435;&#x440;&#x435;&#x431;&#x440;&#x44f;&#x43d;&#x44b;&#x438;&#x306; &#x440;&#x43e;&#x434;&#x43d;&#x438;&#x43a;.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "Серебряный родник.app"
-            BlueprintName = "Серебряный родник"
-            ReferencedContainer = "container:Серебряный родник.xcodeproj">
+            BuildableName = "&#x421;&#x435;&#x440;&#x435;&#x431;&#x440;&#x44f;&#x43d;&#x44b;&#x438;&#x306; &#x440;&#x43e;&#x434;&#x43d;&#x438;&#x43a;.app"
+            BlueprintName = "&#x421;&#x435;&#x440;&#x435;&#x431;&#x440;&#x44f;&#x43d;&#x44b;&#x438;&#x306; &#x440;&#x43e;&#x434;&#x43d;&#x438;&#x43a;"
+            ReferencedContainer = "container:&#x421;&#x435;&#x440;&#x435;&#x431;&#x440;&#x44f;&#x43d;&#x44b;&#x438;&#x306; &#x440;&#x43e;&#x434;&#x43d;&#x438;&#x43a;.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "Серебряный родник.app"
-            BlueprintName = "Серебряный родник"
-            ReferencedContainer = "container:Серебряный родник.xcodeproj">
+            BuildableName = "&#x421;&#x435;&#x440;&#x435;&#x431;&#x440;&#x44f;&#x43d;&#x44b;&#x438;&#x306; &#x440;&#x43e;&#x434;&#x43d;&#x438;&#x43a;.app"
+            BlueprintName = "&#x421;&#x435;&#x440;&#x435;&#x431;&#x440;&#x44f;&#x43d;&#x44b;&#x438;&#x306; &#x440;&#x43e;&#x434;&#x43d;&#x438;&#x43a;"
+            ReferencedContainer = "container:&#x421;&#x435;&#x440;&#x435;&#x431;&#x440;&#x44f;&#x43d;&#x44b;&#x438;&#x306; &#x440;&#x43e;&#x434;&#x43d;&#x438;&#x43a;.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "Серебряный родник.app"
-            BlueprintName = "Серебряный родник"
-            ReferencedContainer = "container:Серебряный родник.xcodeproj">
+            BuildableName = "&#x421;&#x435;&#x440;&#x435;&#x431;&#x440;&#x44f;&#x43d;&#x44b;&#x438;&#x306; &#x440;&#x43e;&#x434;&#x43d;&#x438;&#x43a;.app"
+            BlueprintName = "&#x421;&#x435;&#x440;&#x435;&#x431;&#x440;&#x44f;&#x43d;&#x44b;&#x438;&#x306; &#x440;&#x43e;&#x434;&#x43d;&#x438;&#x43a;"
+            ReferencedContainer = "container:&#x421;&#x435;&#x440;&#x435;&#x431;&#x440;&#x44f;&#x43d;&#x44b;&#x438;&#x306; &#x440;&#x43e;&#x434;&#x43d;&#x438;&#x43a;.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
